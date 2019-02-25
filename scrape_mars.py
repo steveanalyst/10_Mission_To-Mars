@@ -16,7 +16,7 @@ def init_browser():
     # return browser = Browser('chrome', **executable_path, headless=False)
     
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
-    return Browser('chrome', **executable_path, headless=False)
+    return Browser('chrome', **executable_path, headless=True)
 
     
 # Create Mars dictionary for importing into Mongo
@@ -67,9 +67,9 @@ def mars_feature_image_scrape():
 
     # Click button or link to reach the full resolution image
     browser.click_link_by_partial_text('FULL IMAGE')
-    time.sleep(2)
+    time.sleep(3)
     browser.click_link_by_partial_text('more info')
-    time.sleep(2)
+    time.sleep(3)
     browser.click_link_by_partial_text('.jpg')
 
     # Create HTML object 
