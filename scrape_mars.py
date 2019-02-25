@@ -78,11 +78,11 @@ def mars_feature_image_scrape():
     soup = bs(fullsize_html, 'html.parser')
 
     # Get full size picture url
-    featured_img_url = soup.find('img').get('src')
+    featured_image_url = soup.find('img').get('src')
 
 
     # Store data in a dictionary
-    mars_data['featured_image_url'] = featured_image_url 
+    mars_data['featured_image_url'] = featured_image_url
         
     return mars_data
 
@@ -149,7 +149,7 @@ def mars_hemispheres_scrape():
     items = soup.find_all('div', class_='item')
 
     # Create empty list to save hemisphere urls 
-    hemisphere_image_urls = []
+    image_urls = []
 
     # base url 
     base_url = 'https://astrogeology.usgs.gov'
@@ -168,12 +168,12 @@ def mars_hemispheres_scrape():
         soup = bs( partial_html, 'html.parser')
 
         # combine to get full image link
-        hemisphere_image_urls = base_url + soup.find('img', class_='wide-image')['src']
-        hemisphere_image_urls.append({"title" : title, "img_url" : hemisphere_image_urls})
+        img_url = base_url + soup.find('img', class_='wide-image')['src']
+        image_urls.append({"title" : title, "img_url" : img_url})
 
 
-    # Store data in a dictionary
-    mars_data['hemisphere_image_urls'] = hemisphere_image_urls
+    # Store data
+    mars_data['hemisphere_image_urls'] = image_urls
 
 
     return mars_data
